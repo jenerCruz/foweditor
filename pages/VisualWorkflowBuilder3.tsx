@@ -1361,174 +1361,91 @@ function VisualWorkflowBuilder3() {
           </div>
         </div>
       </div>
-      
-      <SubframeCore.Dialog.Root open={showTriggerDialog} onOpenChange={setShowTriggerDialog}>
-        <SubframeCore.Dialog.Portal>
-          <SubframeCore.Dialog.Overlay />
-          <SubframeCore.Dialog.Content asChild={true}>
-            <Dialog>
-              <Dialog.Header
-                icon={<FeatherRss />}
-                title="Add Trigger"
-                description="Configure a trigger to start your workflow"
-              />
-              <div className="flex w-full flex-col gap-4">
-                <TextField
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Trigger Name"
-                  helpText=""
-                >
-                  <TextField.Input
-                    placeholder="e.g., gmail, rss, webhook"
-                    value={triggerName}
-                    onChange={(e) => setTriggerName(e.target.value)}
-                  />
-                </TextField>
-                <Select
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Trigger Type"
-                  placeholder="Select trigger"
-                  helpText=""
-                  icon={null}
-                  value={triggerType}
-                  onValueChange={(value: string) => setTriggerType(value)}
-                >
-                  <Select.Item value="gmail">Gmail</Select.Item>
-                  <Select.Item value="rss">RSS</Select.Item>
-                  <Select.Item value="webhook">Webhook</Select.Item>
-                  <Select.Item value="email">Email</Select.Item>
-                  <Select.Item value="schedule">Schedule</Select.Item>
-                  <Select.Item value="poll">Poll</Select.Item>
-                </Select>
-                <TextField
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="URL / Configuration"
-                  helpText="Feed URL or endpoint"
-                  icon={<FeatherLink />}
-                >
-                  <TextField.Input
-                    placeholder="https://hnrss.org/newest?points=300"
-                    value={triggerUrl}
-                    onChange={(e) => setTriggerUrl(e.target.value)}
-                  />
-                </TextField>
-                <div className="flex w-full items-center justify-between">
-                  <span className="text-body font-body text-default-font">Active</span>
-                  <Switch checked={isActive} onCheckedChange={setIsActive} />
-                </div>
-              </div>
-              <Dialog.Actions
-                secondaryButton={
-                  <Button
-                    variant="neutral-secondary"
-                    onClick={() => setShowTriggerDialog(false)}
-                  >
-                    Cancel
-                  </Button>
-                }
-                primaryButton={
-                  <Button
-                    variant="brand-primary"
-                    onClick={addTriggerToWorkflow}
-                  >
-                    Add Trigger
-                  </Button>
-                }
-              />
-            </Dialog>
-          </SubframeCore.Dialog.Content>
-        </SubframeCore.Dialog.Portal>
-      </SubframeCore.Dialog.Root>
+       
+       <SubframeCore.Dialog.Root
+  open={showTriggerDialog}
+  onOpenChange={setShowTriggerDialog}
+>
+  <SubframeCore.Dialog.Portal>
+    <SubframeCore.Dialog.Overlay />
 
-      <SubframeCore.Dialog.Root open={showActionDialog} onOpenChange={setShowActionDialog}>
-        <SubframeCore.Dialog.Portal>
-          <SubframeCore.Dialog.Overlay />
-          <SubframeCore.Dialog.Content asChild={true}>
-            <Dialog>
-              <Dialog.Header
-                icon={<FeatherBox />}
-                title="Add Action / Job"
-                description="Configure a job with actions to execute"
+    <SubframeCore.Dialog.Content className="dialog-content">
+      <Dialog.Root>
+        <Dialog.Header
+          icon={<FeatherRss />}
+          title="Add Trigger"
+          description="Configure a new trigger for your workflow"
+        />
+
+        <Dialog.Body>
+          <div className="flex w-full flex-col gap-4">
+            <TextField variant="filled" label="Trigger Name">
+              <TextField.Input
+                placeholder="e.g., rss"
+                value={triggerName}
+                onChange={(e) => setTriggerName(e.target.value)}
               />
-              <div className="flex w-full flex-col gap-4">
-                <TextField
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Job ID"
-                  helpText=""
-                >
-                  <TextField.Input
-                    placeholder="e.g., ifttt, slack_notify"
-                    value={jobId}
-                    onChange={(e) => setJobId(e.target.value)}
-                  />
-                </TextField>
-                <TextField
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Job Name"
-                  helpText=""
-                >
-                  <TextField.Input
-                    placeholder="Send to IFTTT"
-                    value={jobName}
-                    onChange={(e) => setJobName(e.target.value)}
-                  />
-                </TextField>
-                <Select
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Runs On"
-                  placeholder="Select environment"
-                  helpText=""
-                  icon={null}
-                  value={runsOn}
-                  onValueChange={(value: string) => setRunsOn(value)}
-                >
-                  <Select.Item value="ubuntu-latest">ubuntu-latest</Select.Item>
-                  <Select.Item value="ubuntu-20.04">ubuntu-20.04</Select.Item>
-                  <Select.Item value="macos-latest">macos-latest</Select.Item>
-                </Select>
-                <TextField
-                  className="h-auto w-full flex-none"
-                  variant="filled"
-                  label="Action (uses)"
-                  helpText="GitHub action to use"
-                >
-                  <TextField.Input
-                    placeholder="actionsflow/ifttt-webhook-action@v1"
-                    value={action}
-                    onChange={(e) => setAction(e.target.value)}
-                  />
-                </TextField>
-              </div>
-              <Dialog.Actions
-                secondaryButton={
-                  <Button
-                    variant="neutral-secondary"
-                    onClick={() => setShowActionDialog(false)}
-                  >
-                    Cancel
-                  </Button>
-                }
-                primaryButton={
-                  <Button
-                    variant="brand-primary"
-                    onClick={addActionToWorkflow}
-                  >
-                    Add Action
-                  </Button>
-                }
+            </TextField>
+
+            <Select
+              variant="filled"
+              label="Trigger Type"
+              value={triggerType}
+              onValueChange={setTriggerType}
+            >
+              <Select.Item value="gmail">Gmail</Select.Item>
+              <Select.Item value="rss">RSS</Select.Item>
+              <Select.Item value="webhook">Webhook</Select.Item>
+              <Select.Item value="email">Email</Select.Item>
+              <Select.Item value="schedule">Schedule</Select.Item>
+              <Select.Item value="poll">Poll</Select.Item>
+            </Select>
+
+            <TextField
+              variant="filled"
+              label="URL / Configuration"
+              icon={<FeatherLink />}
+            >
+              <TextField.Input
+                placeholder="https://hnrss.org/newest?points=300"
+                value={triggerUrl}
+                onChange={(e) => setTriggerUrl(e.target.value)}
               />
-            </Dialog>
-          </SubframeCore.Dialog.Content>
-        </SubframeCore.Dialog.Portal>
-      </SubframeCore.Dialog.Root>
-    </DefaultPageLayout>
+            </TextField>
+
+            <div className="flex w-full items-center justify-between">
+              <span className="text-body font-body">Active</span>
+              <Switch checked={isActive} onCheckedChange={setIsActive} />
+            </div>
+          </div>
+        </Dialog.Body>
+
+        <Dialog.Footer>
+          <Dialog.Actions
+            secondaryButton={
+              <Button
+                variant="neutral-secondary"
+                onClick={() => setShowTriggerDialog(false)}
+              >
+                Cancel
+              </Button>
+            }
+            primaryButton={
+              <Button variant="brand-primary" onClick={addTriggerToWorkflow}>
+                Add Trigger
+              </Button>
+            }
+          />
+        </Dialog.Footer>
+      </Dialog.Root>
+    </SubframeCore.Dialog.Content>
+  </SubframeCore.Dialog.Portal>
+</SubframeCore.Dialog.Root>
+
+</DefaultPageLayout>
   );
-}
+)
 
 export default VisualWorkflowBuilder3;
+
+export default VisualWorkflowBuilder3
