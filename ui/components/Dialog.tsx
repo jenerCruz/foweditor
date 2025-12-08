@@ -105,14 +105,21 @@ const Actions: React.FC<ActionsProps> = ({
   </div>
 );
 
-/ ---------------------------- EXPORT ---------------------------- /
+// / ---------------------------- EXPORT ---------------------------- /
 
-// BaseDialog es un componente válido que renderiza DialogRoot
-const BaseDialog: React.FC<DialogRootProps> = (props) => <DialogRoot {...props} />;
+// 1. Asigna el componente principal (DialogRoot) a un nuevo nombre de exportación (Dialog)
+const Dialog = DialogRoot as React.FC<DialogRootProps> & {
+  Content: typeof Content;
+  Header: typeof Header;
+  Actions: typeof Actions;
+};
 
-export const Dialog = Object.assign(BaseDialog, {
-  Root: DialogRoot,
-  Content,
-  Header,
-  Actions,
-});
+// 2. Adjunta estáticamente los subcomponentes definidos
+Dialog.Content = Content;
+Dialog.Header = Header;
+Dialog.Actions = Actions;
+
+// 3. Exporta el componente compuesto
+export { Dialog };
+
+// Nota: Elimina cualquier exportación previa como 'BaseDialog' si ya no la necesitas.
