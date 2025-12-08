@@ -46,8 +46,7 @@ const DialogRoot = React.forwardRef<HTMLDivElement, DialogRootProps>(
     { children, className, ...otherProps }: DialogRootProps,
     ref
   ) {
-    return
-      (
+    return (
       <SubframeCore.Dialog.Root {...otherProps}>
         {children}
       </SubframeCore.Dialog.Root>
@@ -55,7 +54,7 @@ const DialogRoot = React.forwardRef<HTMLDivElement, DialogRootProps>(
   }
 );
 
-/ ---------------------------- HEADER ---------------------------- /
+/* ---------------------------- HEADER ---------------------------- */
 
 interface HeaderProps {
   icon?: React.ReactNode;
@@ -81,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({ icon, title, description, className }) 
   </div>
 );
 
-/ ---------------------------- ACTIONS ---------------------------- /
+/* ---------------------------- ACTIONS ---------------------------- */
 
 interface ActionsProps {
   primaryButton?: React.ReactNode;
@@ -105,21 +104,16 @@ const Actions: React.FC<ActionsProps> = ({
   </div>
 );
 
-// / ---------------------------- EXPORT ---------------------------- /
+/* ---------------------------- EXPORT ---------------------------- */
 
-// 1. Asigna el componente principal (DialogRoot) a un nuevo nombre de exportación (Dialog)
 const Dialog = DialogRoot as React.FC<DialogRootProps> & {
   Content: typeof Content;
   Header: typeof Header;
   Actions: typeof Actions;
 };
 
-// 2. Adjunta estáticamente los subcomponentes definidos
 Dialog.Content = Content;
 Dialog.Header = Header;
 Dialog.Actions = Actions;
 
-// 3. Exporta el componente compuesto
 export { Dialog };
-
-// Nota: Elimina cualquier exportación previa como 'BaseDialog' si ya no la necesitas.
