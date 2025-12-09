@@ -1,25 +1,22 @@
 {
-  "name": "Visual Workflow Builder 3 Prototype",
+  "name": "Visual Workflow Builder 2 Prototype",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/material": "^7.3.6",
-    "@subframe/core": "1.148.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "reactflow": "^11.10.4"
+    "@subframe/core": "1.148.0",
+    "reactflow": "^11.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@vitejs/plugin-react": "^5.1.2",
+    "@vitejs/plugin-react-swc": "^3.10.2",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3",
+    "typescript": "^4.0.0",
     "vite": "6.3.5"
   },
   "scripts": {

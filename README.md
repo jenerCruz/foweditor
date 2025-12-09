@@ -1,6 +1,6 @@
-# Visual Workflow Builder 3 Prototype
+# Visual Workflow Builder 2 Prototype
 
-This is a code bundle for Visual Workflow Builder 3 Prototype.
+This is a code bundle for Visual Workflow Builder 2 Prototype.
 
 ## Running the code
 
