@@ -27,6 +27,7 @@ import { FeatherMail } from "@subframe/core";
 import { FeatherSlack } from "@subframe/core";
 import { FeatherAlertCircle } from "@subframe/core";
 import * as SubframeCore from "@subframe/core";
+import * as RadixDialog from "@radix-ui/react-dialog";
 import { Accordion } from "../ui/components/Accordion";
 import { Badge } from "../ui/components/Badge";
 import { Breadcrumbs } from "../ui/components/Breadcrumbs";
@@ -1498,7 +1499,7 @@ function VisualWorkflowBuilder3({
       </div>
       
       <SubframeCore.Dialog.Root open={showTriggerDialog} onOpenChange={setShowTriggerDialog}>
-        <SubframeCore.Dialog.Portal>
+        <RadixDialog.Portal>
           <SubframeCore.Dialog.Overlay className="fixed inset-0 bg-black/60" />
           <SubframeCore.Dialog.Content asChild>
             <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 flex flex-col items-start gap-6 rounded-lg border border-solid border-neutral-border bg-default-background shadow-xl px-6 py-6">
@@ -1568,11 +1569,11 @@ function VisualWorkflowBuilder3({
               </div>
             </div>
           </SubframeCore.Dialog.Content>
-        </SubframeCore.Dialog.Portal>
+          <RadixDialog.Portal>
       </SubframeCore.Dialog.Root>
 
       <SubframeCore.Dialog.Root open={showActionDialog} onOpenChange={setShowActionDialog}>
-        <SubframeCore.Dialog.Portal>
+        <RadixDialog.Portal>
           <SubframeCore.Dialog.Overlay className="fixed inset-0 bg-black/60" />
           <SubframeCore.Dialog.Content asChild>
             <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 flex flex-col items-start gap-6 rounded-lg border border-solid border-neutral-border bg-default-background shadow-xl px-6 py-6">
@@ -1652,11 +1653,11 @@ function VisualWorkflowBuilder3({
               </div>
             </div>
           </SubframeCore.Dialog.Content>
-        </SubframeCore.Dialog.Portal>
+         <RadixDialog.Portal>
       </SubframeCore.Dialog.Root>
 
       <SubframeCore.Dialog.Root open={showValidationDialog} onOpenChange={setShowValidationDialog}>
-        <SubframeCore.Dialog.Portal>
+        <RadixDialog.Portal>
           <SubframeCore.Dialog.Overlay className="fixed inset-0 bg-black/60" />
           <SubframeCore.Dialog.Content asChild>
             <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] max-h-[80vh] flex flex-col items-start rounded-lg border border-solid border-neutral-border bg-default-background shadow-xl">
@@ -1767,7 +1768,7 @@ function VisualWorkflowBuilder3({
               </div>
             </div>
           </SubframeCore.Dialog.Content>
-        </SubframeCore.Dialog.Portal>
+        <RadixDialog.Portal>
       </SubframeCore.Dialog.Root>
     </DefaultPageLayout>
   );
